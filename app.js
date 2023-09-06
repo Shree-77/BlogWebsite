@@ -14,20 +14,25 @@ app.listen(8080);
 
 
 app.get('/',(req, res)=>{
-    res.render('index');
+    const blogs=[
+        {title:'I am Batman ', snippet:'Lorem ipsum dolor sit amet consectetur adipisicing'},
+                {title:'Justice League ', snippet:'Lorem ipsum dolor sit amet consectetur adipisicing'},
+                        {title:'Batman vs Superman ', snippet:'Lorem ipsum dolor sit amet consectetur adipisicing'}
+    ];
+    res.render('index',{title:'Home', blogs});
 });
 
 app.get('/about',(req, res)=>{
-  res.render('about');
+  res.render('about',{title:'About'});
 });
 
 app.get('/blogs/create',(req,res)=>{
-    res.render('create');
+    res.render('create',{title:'Create'});
 })
 
 //404 Page
 app.use((req,res)=>{
-    res.render('404');
+    res.render('404',{title:'404 Not Found'});
 })
 
 
