@@ -1,4 +1,7 @@
+const exp = require('constants');
 const express = require('express');
+const morgan = require('morgan');
+
 
 //Express app
 
@@ -11,6 +14,13 @@ app.set('view engine','ejs');
 //listen for req
 
 app.listen(8080);
+
+//middleware & Static files
+
+app.use(express.static('public'));
+
+app.use(morgan('dev'));
+
 
 
 app.get('/',(req, res)=>{
