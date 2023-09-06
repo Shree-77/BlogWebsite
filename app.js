@@ -8,34 +8,26 @@ const app = express();
 
 app.set('view engine','ejs');
 
-
-
 //listen for req
 
 app.listen(8080);
 
-const Hpath = './views/index.html';
-const Apath = './views/about.html'
-const Epath='./views/404.html';
 
 app.get('/',(req, res)=>{
-   res.sendFile(Hpath,{root:__dirname});
+    res.render('index');
 });
 
 app.get('/about',(req, res)=>{
-  res.sendFile(Apath,{root:__dirname});
+  res.render('about');
 });
 
-//redirects
-
-app.get('/about-us',(req,res)=>{
-    res.redirect('/about');
+app.get('/blogs/create',(req,res)=>{
+    res.render('create');
 })
-
 
 //404 Page
 app.use((req,res)=>{
-    res.sendFile(Epath,{root:__dirname});
+    res.render('404');
 })
 
 
