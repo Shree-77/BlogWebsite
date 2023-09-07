@@ -9,7 +9,7 @@ const app = express();
 
 //connect to database
 
-const dbURI = 'mongodb+srv://Shree:cB84gmaAEWQyniX6@cluster0.xlxclpj.mongodb.net/Blog-site?retryWrites=true&w=majority'; //Blog-site
+const dbURI = 'mongodb+srv://Shree:32Vexd9XegwTA63K@cluster0.xlxclpj.mongodb.net/Blog-site?retryWrites=true&w=majority'; //Blog-site
 mongoose.connect(dbURI).
 then((result)=>app.listen(8080)).catch((err)=>{
     console.log(err);
