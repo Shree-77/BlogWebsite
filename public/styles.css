@@ -132,3 +132,15 @@ textarea {
     font-size: 1.2em;
     cursor: pointer;
 }
+
+/* Adjust margin and padding for h2 and p elements within the .about-section */
+.about-section h2 {
+    color: crimson;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.about-section p {
+    margin-top: 0;
+    margin-bottom: 15px;
+}

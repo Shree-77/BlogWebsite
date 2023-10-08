@@ -3,13 +3,17 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const blogRoutes = require('./routes/blogroutes');
 
+//dotenv
+
+require('dotenv').config();
+
 //Express app
 
 const app = express();
 
 //connect to database
 
-const dbURI = 'mongodb+srv://Shree:32Vexd9XegwTA63K@cluster0.xlxclpj.mongodb.net/Blog-site?retryWrites=true&w=majority'; //Blog-site
+const dbURI = process.env.MONGODB_URI;  //Blog-site
 mongoose.connect(dbURI).
 then((result)=>app.listen(8080)).catch((err)=>{
     console.log(err);
