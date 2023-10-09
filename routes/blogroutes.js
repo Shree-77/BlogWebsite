@@ -5,14 +5,20 @@ const router = express.Router();
 
 // blog routes
 
-router.get('/create', blogController.blog_create_get);
+router.get('/signup',blogController.blog_signup_get);
 
-router.get('/:id',blogController.blog_details )
+router.post('/signup',blogController.blog_signup_post);
 
-router.get('/', blogController.blog_index);
+router.get('/log-in',blogController.blog_login_get);
 
-router.post('/', blogController.blog_create_post);
+router.get('/blogs/create', blogController.blog_create_get);
 
-router.delete('/:id',blogController.blog_delete)
+router.get('/blogs/:id',blogController.blog_details )
+
+router.get('/blogs', blogController.blog_index);
+
+router.post('/blogs', blogController.blog_create_post);
+
+router.delete('/blogs/:id',blogController.blog_delete)
 
 module.exports = router;
