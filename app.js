@@ -7,8 +7,6 @@ const mongoose = require('mongoose');
 const blogRoutes = require('./routes/blogroutes');
 const User = require('./models/auth')
 const bcrypt=require("bcryptjs");
-//dotenv
-
 require('dotenv').config();
 
 //Express app
@@ -28,7 +26,7 @@ then((result)=>app.listen(8080)).catch((err)=>{
 
 app.set('view engine', 'ejs');
 
-//Authentication 
+//Authentication using passport middleware
 
 app.use(session({ secret: "cats", resave: false, saveUninitialized: true }));
 app.use(passport.initialize());

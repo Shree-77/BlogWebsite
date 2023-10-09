@@ -1,6 +1,7 @@
 const Blog = require('../models/blog');
 const Auth = require('../models/auth');
 
+
 //blog_index , blog_details , blog_create_get , blog_create_post, blog_delete
 
 const blog_signup_get=(req,res)=>{
@@ -34,6 +35,7 @@ const blog_signup_post = async (req, res, next) => {
 const blog_login_get=(req,res)=>{
    res.render('Auth/login',{title:'Log-In'});
 }
+
 
 
 const blog_index=(req,res)=>{
@@ -94,3 +96,4 @@ module.exports={
     blog_create_post,
     blog_delete
 }
+

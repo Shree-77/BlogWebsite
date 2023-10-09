@@ -3,19 +3,48 @@
 
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>Login Page in HTML with CSS Code Example</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheet/Auth_styles.css">
+
 </head>
 
 <body>
-    <h1>Sign Up</h1>
-    <form action="" method="POST">
-        <label for="username">Username</label>
-        <input name="username" placeholder="username" type="text" />
-        <label for="password">Password</label>
-        <input name="password" type="password" />
-        <li><a href="/log-in">Already an user? Log-in</a></li>
-        <button>Sign Up</button>
-    </form>
+    <div class="box-form">
+        <div class="left">
+            <div class="overlay">
+                <div class="reveal-text">
+                    <h1>Blogify</h1>
+                </div>
+                <span>
+                    <p>Welcome to Blogify - Your Premier Destination for Inspiring Stories, Engaging Content, and
+                        Creative Expression.</p>
+                </span>
+                <img src="/assets/Blog.svg" alt="Icon">
+            </div>
+        </div>
+        <div class="right">
+            <h5>Sign Up</h5>
+            <p>Already have an account? <a href="/log-in">Log-in to your Existing account</a> it takes less than a minute</p>
+            <div class="inputs">
+                <form action="" method="POST">
+                    <label for="username"></label>
+                    <input name="username" placeholder="Username" type="text" />
+                    <label for="password"></label>
+                    <input name="password" placeholder="Password" type="password" />
+                    <br>
+                    <button>SignUp</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+
 </body>
 
 </html>
