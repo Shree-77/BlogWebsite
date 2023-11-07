@@ -57,9 +57,24 @@ app.use((err, req, res, next) => {
 configurePassport();
 
 // Routes
+
 app.get('/', (req, res) => {
   res.redirect('/signup');
 });
+
+
+// Demo Login
+app.get('/demo-login', (req, res) => {
+  
+  req.body.username = 'shree'; 
+  req.body.password = '123';
+  passport.authenticate('local', {
+    successRedirect: '/blogs', 
+    failureRedirect: '/signup', 
+  })(req, res);
+});
+
+
 
 // Login
 app.post('/log-in',
