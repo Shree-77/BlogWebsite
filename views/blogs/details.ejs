@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <%- include('../partials/head.ejs') %>
 
@@ -5,11 +6,11 @@
         <%- include('../partials/nav.ejs') %>
 
             <div class="blog-post">
-                <h2 class="blog-title">
-                    <%= blog.title %>
+                <h2 class="blog-title">Title: <%= blog.title %>
                 </h2>
-                <p class="blog-author">Author: <%= blog.userName %>
-                </p>
+                <p class="blog-author">Author: <span class="italic">
+                        <%= blog.userName %>
+                    </span></p>
                 <div class="blog-content">
                     <p class="blog-body">
                         <%= blog.body %>
@@ -19,6 +20,30 @@
                     <img src="/assets/trashcan.svg" alt="delete icon">
                 </a>
             </div>
+
+            <style>
+                .blog-post {
+                    position: relative;
+                }
+
+                .blog-author {
+                    margin-top: 10px;
+                    color: crimson;
+                }
+
+                .italic {
+                    font-style: italic;
+                }
+
+                .blog-body {
+                    line-height: 1.5;
+                }
+
+                .blog-title {
+                    padding-top: 20px;
+                }
+            </style>
+
             <script>
                 const trashcan = document.querySelector('a.delete');
 
@@ -28,9 +53,25 @@
                     fetch(endpoint, {
                         method: 'DELETE'
                     })
-                        .then((response) => response.json())
-                        .then((data) => window.location.href = data.redirect)
-                        .catch(err => console.log(err));
+                        .then((response) => {
+                            if (response.status === 200) {
+                                // Blog post deleted successfully, redirect to the desired page
+                                return response.json();
+                            } else if (response.status === 403) {
+                                // Unauthorized to delete, display an alert message
+                                return response.json();
+                            } else {
+                                throw new Error('Unexpected response status');
+                            }
+                        })
+                        .then((data) => {
+                            if (data.error) {
+                                alert(data.error);
+                            } else {
+                                window.location.href = data.redirect;
+                            }
+                        })
+                        .catch((err) => console.error(err));
                 });
             </script>
     </body>

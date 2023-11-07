@@ -20,37 +20,6 @@ ul {
     color: #222;
 }
 
-/* nav & footer styles */
-nav {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 60px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #ddd;
-    text-transform: uppercase;
-}
-
-nav ul {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-}
-
-nav li {
-    list-style-type: none;
-    margin-left: 20px;
-}
-
-nav h1 {
-    font-size: 3em;
-}
-
-nav p,
-nav a {
-    color: #777;
-    font-weight: 300;
-}
-
 footer {
     color: #777;
     text-align: center;
@@ -143,5 +112,75 @@ textarea {
 .about-section p {
     margin-top: 0;
     margin-bottom: 15px;
+}
+/* Adjusted nav styles */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 20px;
+    background-color: #333;
+    color: #fff;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    margin: 0 10px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-info span {
+    margin-right: 10px;
+    font-weight: bold;
+    color: #fff;
+    /* Customize font color */
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    /* Customize link text color */
+}
+nav p{
+    color: #fff;
+    font-style: italic;
+}
+
+.user-info a {
+    border: 1px solid #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-left: 10px;
+    /* Add margin to separate the "Logout" link */
+}
+
+/* Adjusted spacing for "Welcome, username" and "Logout" */
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-info span {
+    font-weight: bold;
+    color: #fff;
+    margin-right: 5px;
+    /* Reduce margin for a more compact look */
+}
+
+.user-info a {
+    border: 1px solid #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    /* Customize button shape */
 }
 
