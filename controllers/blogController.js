@@ -109,7 +109,8 @@ const blog_delete = async (req, res) => {
       const result = await Blog.findByIdAndDelete(id);
       res.json({ redirect: '/blogs' });
     } else {
-      res.status(403).json({ error: 'You are not authorized to delete this blog' });
+      // Send a JSON response indicating that the user is not authorized to delete the blog
+      res.status(403).json({ error: "You are not authorized to delete this blog" });
     }
   } catch (err) {
     console.error(err);
