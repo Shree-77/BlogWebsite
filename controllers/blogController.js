@@ -90,16 +90,34 @@ const blog_create_post = (req, res) => {
 };
 
 
-const blog_delete=(req,res)=>{
+const blog_delete = async (req, res) => {
+  try {
+    if (!req.isAuthenticated()) {
+      // Check if the user is authenticated
+      return res.status(401).json({ error: 'User not authenticated' });
+    }
+
     const id = req.params.id;
-    Blog.findByIdAndDelete(id)
-    .then(result => {
+    const blog = await Blog.findById(id);
+
+    if (!blog) {
+      return res.status(404).json({ error: 'Blog not found' });
+    }
+
+    if (blog.user.toString() === req.user._id.toString()) {
+      // Check if the author of the blog post matches the currently logged-in user
+      const result = await Blog.findByIdAndDelete(id);
       res.json({ redirect: '/blogs' });
-    })
-    .catch(err => {
-      console.log(err);
-    });
-}
+    } else {
+      res.status(403).json({ error: 'You are not authorized to delete this blog' });
+    }
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
+
+
 
 
 module.exports={

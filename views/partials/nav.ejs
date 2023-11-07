@@ -13,5 +13,10 @@
             <span>Welcome, <%= user.username %></span>
             <a href="/log-in">Logout</a>
         </div>
-        <% } %>
+        <% } else { %>
+            <div class="auth-links">
+                <a href="/log-in">Login</a>
+                <a href="/signup">Signup</a>
+            </div>
+            <% } %>
 </nav>
