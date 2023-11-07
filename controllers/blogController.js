@@ -51,6 +51,7 @@ const blog_index=(req,res)=>{
 const blog_details=(req,res)=>{
      const id = req.params.id;
   Blog.findById(id)
+    .populate('user')
     .then(result => {
       res.render('blogs/details', { blog: result, title: 'Blog Details' });
     })
@@ -63,16 +64,31 @@ const blog_create_get =(req,res)=>{
     res.render('blogs/create', { title: 'Create a new blog' });
 }
 
-const blog_create_post=(req,res)=>{
-     const blog = new Blog(req.body);
-        blog.save()
+const blog_create_post = (req, res) => {
+  if (!req.user || !req.user._id) {
+    return res.status(401).send('User not authenticated or missing user ID');
+  }
+
+  const user = req.user;
+
+  const blogData = {
+    title: req.body.title,
+    snippet: req.body.snippet,
+    body: req.body.body,
+    user: user._id, // User ID
+    userName: user.username  // User name
+  };
+
+  const blog = new Blog(blogData);
+  blog.save()
     .then(result => {
       res.redirect('/blogs');
     })
     .catch(err => {
       console.log(err);
     });
-}
+};
+
 
 const blog_delete=(req,res)=>{
     const id = req.params.id;
