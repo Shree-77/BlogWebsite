@@ -5,11 +5,12 @@
         <%- include('../partials/nav.ejs') %>
 
             <div class="blog-post">
-                <h2 class="blog-title">
+                <h2 class="blog-title"> Title : 
                     <%= blog.title %>
                 </h2>
-                <p class="blog-author">Author: <%= blog.userName %>
-                </p>
+                <p class="blog-author">Author: <span class="italic">
+                        <%= blog.userName %>
+                    </span></p>
                 <div class="blog-content">
                     <p class="blog-body">
                         <%= blog.body %>
@@ -19,6 +20,32 @@
                     <img src="/assets/trashcan.svg" alt="delete icon">
                 </a>
             </div>
+
+            <style>
+                .blog-post {
+                    position: relative;
+                }
+                
+                .blog-author {
+                    margin-top: 10px;
+                    color: crimson;
+                    /* Add space between author and body */
+                }
+
+                .italic {
+                    font-style: italic;
+                    /* Make the author name italic */
+                }
+
+                .blog-body {
+                    line-height: 1.5;
+                    /* Adjust the line height as needed for the body text */
+                }
+                .blog-title{
+                    padding-top: 20px;
+                }
+            </style>
+
             <script>
                 const trashcan = document.querySelector('a.delete');
 
